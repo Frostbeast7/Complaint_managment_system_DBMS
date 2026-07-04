@@ -1,0 +1,37 @@
+@page
+@model Sem_project.Pages.Complaints.IndexModel
+
+<h2>Complaints</h2>
+
+<a asp-page="Create" class="btn btn-primary mb-3">Add Complaint</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Student</th>
+            <th>Category</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var c in Model.ComplaintsList)
+{
+        <tr>
+            <td>@c.Complaint_ID</td>
+            <td>@c.Description</td>
+            <td>@c.Date.ToShortDateString()</td>
+            <td>@c.Status</td>
+            <td>@c.StudentName</td>
+            <td>@c.CategoryName</td>
+            <td>
+                <a asp-page="Edit" asp-route-id="@c.Complaint_ID" class="btn btn-sm btn-warning">Edit</a>
+                <a asp-page="Delete" asp-route-id="@c.Complaint_ID" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
